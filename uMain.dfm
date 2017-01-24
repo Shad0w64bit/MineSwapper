@@ -2,9 +2,9 @@ object fmMain: TfmMain
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'fmMain'
+  Caption = 'MineSwapper'
   ClientHeight = 227
-  ClientWidth = 295
+  ClientWidth = 271
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,16 +13,15 @@ object fmMain: TfmMain
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
-  object pbField: TPaintBox
-    Left = 48
-    Top = 16
+  object MineField: TPaintBox
+    Left = 40
+    Top = 8
     Width = 193
     Height = 193
-    OnMouseUp = pbFieldMouseUp
-    OnPaint = pbFieldPaint
+    OnMouseUp = MineFieldMouseUp
+    OnPaint = MineFieldPaint
   end
   object SpriteList: TImageList
     Height = 26
@@ -30,7 +29,7 @@ object fmMain: TfmMain
     Left = 8
     Top = 8
     Bitmap = {
-      494C01010C00540068001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C00540074001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006800000068000000010020000000000000A9
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
