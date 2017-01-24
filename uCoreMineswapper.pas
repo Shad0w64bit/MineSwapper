@@ -49,6 +49,7 @@ type
     procedure setSpriteHeight(const Value: integer);
     function getFieldHeightPixel: integer;
     function getFieldWidthPixel: integer;
+    procedure SetMineCount(const Value: Word);
   public
     constructor Create(AOwner: TComponent);
     destructor Destroy; override;
@@ -68,7 +69,7 @@ type
     property GameState: TGameStateProc write SetGameState;
     property FlagsState: TFlagsStateProc write SetFlagsState;
     property Width: Word read mFieldWidth;
-    property MineCount: Word read mMineCount write mMineCount;
+    property MineCount: Word read mMineCount write SetMineCount;
     property SpriteWidth: integer read getSpriteWidth write setSpriteWidth;
     property SpriteHeight: integer read getSpriteHeight write setSpriteHeight;
     property FieldHeightPixel: integer  read getFieldHeightPixel;
@@ -324,9 +325,14 @@ begin
       OpenEmpty(x,Y)
     else if IsMine(X,Y) then
     begin
-      mFieldUp[X,Y] := cOpen;
-      Boom;
+//      mFieldUp[X,Y] := cOpen;
+      for X := Low(mFieldUp) to High(mFieldUp) do
+        for Y := Low(mFieldUp) to High(mFieldUp) do
+          if mFieldUp[X,Y] = cClose then
+            mFieldUp[X,Y] := cOpen;
+
       Repaint;
+      Boom;
       SetGameState(false); // BOOM !
       SetFlagsState(0);
       mEndGame := true;
@@ -339,10 +345,16 @@ begin
 
     if FinishGame then
     begin
-      SetGameState(true);
+      for X := Low(mFieldUp) to High(mFieldUp) do
+        for Y := Low(mFieldUp) to High(mFieldUp) do
+          if mFieldUp[X,Y] = cClose then
+            mFieldUp[X,Y] := cFlag;
+
       SetFlagsState(0);
       mEndGame := true;
       Repaint;
+      SetGameState(true);
+
       Exit;
     end;
   end;
@@ -426,6 +438,13 @@ begin
 
     SetFlagsState(CountFlagMine);
   end;
+end;
+
+procedure TCoreMineSwapper.SetMineCount(const Value: Word);
+begin
+  mMineCount := Value;
+  if mMineCount > (Height * Width) then
+    mMineCount := Height * Width - 1;
 end;
 
 procedure TCoreMineSwapper.setSpriteHeight(const Value: integer);

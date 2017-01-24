@@ -3,7 +3,7 @@ object fmMain: TfmMain
   Top = 0
   BorderStyle = bsSingle
   Caption = 'MineSwapper'
-  ClientHeight = 227
+  ClientHeight = 214
   ClientWidth = 271
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object fmMain: TfmMain
   PixelsPerInch = 96
   TextHeight = 13
   object MineField: TPaintBox
-    Left = 40
+    Left = 48
     Top = 8
     Width = 193
     Height = 193
@@ -29,7 +29,7 @@ object fmMain: TfmMain
     Left = 8
     Top = 8
     Bitmap = {
-      494C01010C00540074001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C00540078001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006800000068000000010020000000000000A9
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
