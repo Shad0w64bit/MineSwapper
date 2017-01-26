@@ -18,6 +18,9 @@ type
     mPCanvas: PCanvas;
     mSpriteList: TImageList;
 
+{    mNewFieldWidth: integer;
+    mNewFieldHeight: integer;}
+
     // Field Params
     mInitField: boolean;
     mEndGame: boolean;
@@ -63,6 +66,7 @@ type
     procedure SetFlag(X,Y: integer);
     procedure ResizeField(NewHeight, NewWidth: Word);
     procedure InitField;
+    procedure NewGame(Mines, Height, Width: integer);
 
     property Canvas: PCanvas read mPCanvas write mPCanvas;
     property Height: Word read mFieldHeight;
@@ -264,7 +268,7 @@ var
   Mines,i,p: integer;
   m: array [0..2] of TMineNew;
 begin
-//  InitField;
+  InitField;
   Mines := mMineCount;
   mFieldUp[X,Y] := cFirstClick;
 
@@ -402,8 +406,18 @@ procedure TCoreMineSwapper.ResizeField(NewHeight, NewWidth: Word);
 begin
   mFieldHeight := NewHeight;
   mFieldWidth  := NewWidth;
-  SetLength(mFieldUp, mFieldHeight, mFieldWidth);
-  SetLength(mFieldDown, mFieldHeight, mFieldWidth);
+  SetLength(mFieldUp, mFieldWidth, mFieldHeight);
+  SetLength(mFieldDown, mFieldWidth, mFieldHeight);
+end;
+
+procedure TCoreMineSwapper.NewGame(Mines, Height, Width: integer);
+begin
+{  if Mines > (Height*Width-1) then
+    Mines := Height*Width-1;  }
+  ResizeField(Height,Width);
+  MineCount := Mines;
+  InitField;
+  Repaint;
 end;
 
 procedure TCoreMineSwapper.InitField;

@@ -1,6 +1,7 @@
 object fmMain: TfmMain
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'MineSwapper'
   ClientHeight = 214
@@ -11,12 +12,13 @@ object fmMain: TfmMain
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Menu = MainMenu1
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object MineField: TPaintBox
-    Left = 48
+    Left = 56
     Top = 8
     Width = 193
     Height = 193
@@ -29,7 +31,7 @@ object fmMain: TfmMain
     Left = 8
     Top = 8
     Bitmap = {
-      494C01010C00540078001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C0054007C001A001A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006800000068000000010020000000000000A9
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1439,5 +1441,43 @@ object fmMain: TfmMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 64
+    object N1: TMenuItem
+      Caption = #1048#1075#1088#1072
+      object iNewGame: TMenuItem
+        Caption = #1053#1086#1074#1072#1103' '#1080#1075#1088#1072
+        ShortCut = 113
+        OnClick = iNewGameClick
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object iBeginner: TMenuItem
+        Caption = #1053#1086#1074#1080#1095#1086#1082
+        OnClick = iBeginnerClick
+      end
+      object iFun: TMenuItem
+        Caption = #1051#1102#1073#1080#1090#1077#1083#1100
+        OnClick = iFunClick
+      end
+      object iProfessional: TMenuItem
+        Caption = #1055#1088#1086#1092#1077#1089#1089#1080#1086#1085#1072#1083
+        OnClick = iProfessionalClick
+      end
+      object iCustom: TMenuItem
+        Caption = #1054#1089#1086#1073#1099#1077'..'
+        OnClick = iCustomClick
+      end
+      object N8: TMenuItem
+        Caption = '-'
+      end
+      object iExit: TMenuItem
+        Caption = #1042#1099#1093#1086#1076
+        OnClick = iExitClick
+      end
+    end
   end
 end

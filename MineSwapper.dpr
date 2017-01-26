@@ -3,7 +3,8 @@ program MineSwapper;
 uses
   Vcl.Forms,
   uMain in 'uMain.pas' {fmMain},
-  uCoreMineswapper in 'uCoreMineswapper.pas';
+  uCoreMineswapper in 'uCoreMineswapper.pas',
+  uCustomForm in 'uCustomForm.pas' {fmCustomForm};
 
 {$R *.res}
 
