@@ -241,6 +241,13 @@ procedure TCoreMineSwapper.GenerateMines(X, Y: integer);
   var
     I,J,fX,fY: integer;
   begin
+    if mFieldUp[mX,mY] = cFirstClick then
+    begin
+      result := false;
+      exit;
+    end;
+
+
     result := true; // установлена
     if not IsMine(mX,mY) then
     begin
@@ -275,7 +282,7 @@ begin
   // Sets mine in game field
   while (Mines<>0) do
   begin
-    if Mines < (mMineCount-10) then
+    if Mines < mMineCount then
     begin
 
       for I := Low(m) to High(m) do
@@ -309,6 +316,7 @@ begin
   for X := Low(mFieldUp) to High(mFieldUp) do
     for Y := Low(mFieldUp) to High(mFieldUp) do
       if IsMine(X,Y) then
+        if not IsFlag(X,Y) then        
         mFieldUp[X,Y] := cOpen;
 end;
 

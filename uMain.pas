@@ -56,9 +56,9 @@ uses uCustomForm;
 procedure getGameState(const Win: boolean);
 begin
   if Win then
-    ShowMessage('Win')
+    MessageBox(0,PWideChar('Вы выиграли !!!'), PWideChar('Ура!'), MB_ICONINFORMATION)
   else
-    ShowMessage('Boom')
+    MessageBox(0,PWideChar('Вы проиграли.'), PWideChar('Бум!'), MB_ICONERROR);
 end;
 
 procedure getFlagsState(const Flags: integer);
